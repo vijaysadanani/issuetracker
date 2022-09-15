@@ -1,0 +1,20 @@
+<div class="form-container">
+    <mat-card style="width:50%; margin:auto; text-align:center; margin-bottom:10px">Add an Issue</mat-card>
+    <mat-card style="width:50%; margin:auto; text-align:center; margin-bottom:10px"> 
+        <form #myForm="ngForm" (ngSubmit)="addIssue()">
+            <label style="padding:5px">Add an Assignee:</label><br>
+            <input style="margin-bottom:5px" name="assignee" [(ngModel)]="issue.assignee"><br>
+
+            <label style="padding:5px">Issue Description</label><br>
+            <input [(ngModel)]="issue.description" style="margin-bottom:5px" name="description" [(ngModel)]="issue.description"><br>
+
+            <label style="padding:5px">Choose Status</label><br>
+            <select name="status" [(ngModel)]="issue.status">
+                <option>open</option>
+                <option>closed</option>
+            </select> <br>
+
+            <button mat-flat-button color="accent" style="padding:5px" type="submit">Add Task</button>
+        </form>
+    </mat-card>
+</div>

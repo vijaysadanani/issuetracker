@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiEndpoint: 'https://issuetracking-d037.restdb.io/rest/issues',
+  apiKey: '63237da90282ae17e4905d90'
 };
 
 /*

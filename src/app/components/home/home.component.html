@@ -1,0 +1,9 @@
+<div>
+    <mat-card *ngFor="let issue of issues">
+        {{issue.assignee}}
+        {{issue.description}}
+        {{issue.status}}
+        <app-editissue *ngIf="bool" [issue]="issue"></app-editissue>
+    </mat-card>
+</div>
+<button (click)="navigateToForm()">Issue Form</button>
