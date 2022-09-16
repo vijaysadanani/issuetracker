@@ -1,9 +1,57 @@
-<div>
-    <mat-card *ngFor="let issue of issues">
-        {{issue.assignee}}
-        {{issue.description}}
-        {{issue.status}}
-        <app-editissue *ngIf="bool" [issue]="issue"></app-editissue>
-    </mat-card>
+<div style="width:50%; margin:auto; text-align:center; margin-bottom:10px">
+    <h1>Issue Tracking App</h1>
+    <p>Open Issues: {{openIssueCount}}</p>
+    <p>Issue Completion Percentage: {{openPercentage}}%</p>
+
+    <button (click)="navigateToForm()">Issue Form</button>
 </div>
-<button (click)="navigateToForm()">Issue Form</button>
+
+<div style="width:50%; margin:auto; text-align:center; margin-bottom:10px">
+    <label>Filter:</label>
+    <input [(ngModel)]="searchTerm"><br><br>
+    <button mat-raised-button (click)="filter(searchTerm)">Filter by Status</button>
+    <button mat-raised-button (click)="filterAssignee(searchTerm)">Filter by Assignee</button>
+    <button mat-raised-button (click)="clearFilter()">Clear Filter</button>
+</div>
+<div style="width:50%; margin:auto; text-align:center; margin-bottom:10px">
+    <table>
+        <thead>
+            <tr>
+                <th>Issue Id</th>
+                <th>Assignee</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Close Issue?</th>
+                <th>Edit Issue?</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="issues != undefined && found == undefined">
+            <tr *ngFor="let issue of issues">
+                <td><mat-card>{{issue._id}}</mat-card></td>
+                <td><mat-card>{{issue.assignee}}</mat-card></td>
+                <td><mat-card>{{issue.description}}</mat-card></td>
+                <td><mat-card>{{issue.status}}</mat-card></td>
+                <td>
+                    <button mat-raised-button color="warn" *ngIf="issue.status != 'closed'" (click)="closeIssue(issue)">Yes</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" [routerLink]="['/editIssue', issue._id]">Yes</button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="found != undefined">
+            <tr *ngFor="let issue of found">
+                <td><mat-card>{{issue._id}}</mat-card></td>
+                <td><mat-card>{{issue.assignee}}</mat-card></td>
+                <td><mat-card>{{issue.description}}</mat-card></td>
+                <td><mat-card>{{issue.status}}</mat-card></td>
+                <td>
+                    <button mat-stroked-button color="primary" *ngIf="issue.status != 'closed'" (click)="closeIssue(issue)">Yes</button>
+                </td>
+                <td>
+                    <button mat-stroked-button color="primary" [routerLink]="['/editIssue', issue._id]">Yes</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

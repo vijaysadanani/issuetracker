@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiEndpoint: 'https://issuetracking-d037.restdb.io/rest/issues',
-  apiKey: '63237da90282ae17e4905d90'
+  apiKey: '6323af5d0282ae17e4905d94'
 };
 
 /*

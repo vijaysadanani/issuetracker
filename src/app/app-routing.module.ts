@@ -7,7 +7,7 @@ import { IssueformComponent } from './components/issueform/issueform.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'issueForm', component: IssueformComponent},
-  {path: 'editIssue', component: EditissueComponent},
+  {path: 'editIssue/:id', component: EditissueComponent},
   {path: '', redirectTo:'/home', pathMatch: 'full'}
 ];
 

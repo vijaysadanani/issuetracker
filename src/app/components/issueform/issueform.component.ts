@@ -12,7 +12,7 @@ import { IssueService } from 'src/app/services/issue.service';
 export class IssueformComponent implements OnInit {
 
   constructor(private issueService: IssueService, private router: Router) { }
-
+  formNotFilled: string = "";
   ngOnInit(): void {
   }
   issue: Issue = {
@@ -22,7 +22,13 @@ export class IssueformComponent implements OnInit {
   };
 
   addIssue(){
-    this.issueService.createIssue(this.issue).subscribe();
+    if(this.issue) {
+      this.issueService.createIssue(this.issue).subscribe();
+      this.router.navigate(['/home']);
+    } 
+  }
+
+  navigateHome(){
     this.router.navigate(['/home']);
   }
 }

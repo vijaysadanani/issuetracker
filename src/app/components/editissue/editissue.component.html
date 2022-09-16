@@ -1,1 +1,19 @@
-<p>editissue works!</p>
+<h1 style="width:50%; margin:auto; text-align:center; margin-bottom:10px">Editing Issue: {{issue._id}}</h1>
+<div style="width:50%; margin:auto; text-align:center; margin-bottom:10px">
+    <form>
+        <mat-card-title>Issue Description</mat-card-title><br>
+        <mat-card>{{issue.description}}</mat-card><br>
+
+        <label style="padding:5px">Assignee:</label><br>
+            <input style="margin-bottom:5px" name="assignee" [(ngModel)]="issue.assignee"><br>
+
+            <label style="padding:5px">Status:</label><br>
+            <select name="status" [(ngModel)]="issue.status">
+                <option>open</option>
+                <option>closed</option>
+            </select> <br> <br>
+
+        <button style="margin:5px" mat-raised-button color="accent" (click)="navigateHome()">Home</button>
+        <button style="margin:5px" mat-raised-button color="accent" (click)="saveIssue(issue)">Save Issue</button>
+    </form>
+</div>

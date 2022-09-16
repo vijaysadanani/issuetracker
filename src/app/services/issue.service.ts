@@ -16,6 +16,14 @@ export class IssueService {
   }
 
   createIssue(issue: Issue): Observable<any> {
-    return this.httpClient.post(environment.apiEndpoint, issue, {headers: {"Content-Type": "application/JSON", "x-apikey": environment.apiKey}});
+    return this.httpClient.post(environment.apiEndpoint, issue, {headers: {"x-apikey": environment.apiKey}});
+  }
+
+  updateIssue(issue: Issue): Observable<any> {
+    return this.httpClient.put(environment.apiEndpoint + '/' + issue._id, issue, {headers: {"x-apikey": environment.apiKey}})
+  }
+
+  getIssueById(_id: any): Observable<Issue> {
+    return this.httpClient.get<Issue>(environment.apiEndpoint + '/' + _id, {headers: {"x-apikey": environment.apiKey}});
   }
 }
